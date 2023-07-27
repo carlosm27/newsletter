@@ -1,7 +1,10 @@
 import TelegramBot from 'node-telegram-bot-api';
 
-const token = 'YOUR_TELEGRAM_BOT_TOKEN';
+const token = '';
 const bot = new TelegramBot(token, {polling: true});
+
+
+
 
 export function SendMsg(articleLink) {
     bot.on('message', (msg) => {
@@ -11,3 +14,7 @@ export function SendMsg(articleLink) {
         bot.sendMessage(chatId, articleLink);
       });  
 };
+
+console.log("Sending message");
+
+SendMsg(link);
