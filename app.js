@@ -11,7 +11,7 @@ const port = 8000;
 const rssLink = 'https://carlosmv.hashnode.dev/rss.xml';
 
 
-const token = '6271135770:AAHFIfFuengsELaXHUwPwwMdRiTIgSpIuww';
+const token = 'BOT TOKEN';
 const bot = new TelegramBot(token, {polling: true});
 
 cron.schedule("0 0 13 * * 1", async function() {
