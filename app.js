@@ -1,24 +1,26 @@
 import LastEntry  from './rssFeed.js';
 import express from 'express';
-//import { SendMsg } from './bot.js';
 import cron from 'node-cron';
-
-let rssLink = 'https://carlosmv.hashnode.dev/rss.xml';
 import TelegramBot from 'node-telegram-bot-api';
 
-const token = '';
-const bot = new TelegramBot(token, {polling: true});
+
 
 const app = express();
 const port = 8000;
 
-cron.schedule("*/15 * * * * *", async function() {
+const rssLink = 'https://carlosmv.hashnode.dev/rss.xml';
+
+
+const token = '6271135770:AAHFIfFuengsELaXHUwPwwMdRiTIgSpIuww';
+const bot = new TelegramBot(token, {polling: true});
+
+cron.schedule("0 0 13 * * 1", async function() {
     console.log("---------------------");
     console.log("Retrieving the last update");
     let lastEntry = await LastEntry(rssLink);
     console.log("Sending the last article");
-    console.log(`${lastEntry}`);
-    bot.sendMessage(-1001536419617,lastEntry)
+    //console.log(`${lastEntry}`);
+    bot.sendMessage(-1001780163243,lastEntry)
 
   });
 
@@ -35,5 +37,5 @@ app.get('/feed',async  (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Listening on port ${port}`);
 });
